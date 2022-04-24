@@ -12,8 +12,8 @@ DOUBLE_BATTLE = false
 #set to false if you don't want always bushes on which mean you don't pop out when you are moving from 1 bush to another
 ALWAYSBUSHON = true
 #Set the Numbers bellow to a number that hasn't been used as a Terrain ID
-MARSH_ID 	            = 20
-DEEPMARSH_ID 	        = 21
+MARSH_ID 	              = 20
+DEEPMARSH_ID 	          = 21
 MARSHGRASS_ID           = 22
 DEEPMARSHGRASS_ID       = 23
 TALLMARSHGRASS_ID       = 24
@@ -102,7 +102,6 @@ GameData::TerrainTag.register({
   :must_walk              => true
 })
 #==============================================================================
-
 class PokemonGlobalMetadata
   attr_accessor :stuck
   attr_accessor :mudfree

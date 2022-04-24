@@ -28,7 +28,7 @@ class PokeBattle_Battler
     end
   end
 end  
- #============================================================================== 
+#============================================================================== 
 class PokeBattle_Move
   # Accuracy calculations for one-hit KO moves and "always hit" moves are
   # handled elsewhere.
@@ -96,7 +96,6 @@ class PokeBattle_Move
       modifiers[:accuracy_multiplier] *= 1.2
     end
   end
-
   #=============================================================================
   # Glancing check            #by Kota
   #=============================================================================
@@ -120,11 +119,9 @@ class PokeBattle_Move
     # Calculation
     return @battle.pbRandom(ratios[g])==0
   end
-
   #=============================================================================
   # Dmg calcs            #by Kota
   #=============================================================================
-
   def pbCalcDamage(user,target,numTargets=1)
     return if statusMove?
     if target.damageState.disguise
