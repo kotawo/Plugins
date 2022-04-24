@@ -1,4 +1,4 @@
-Name      = Always inside BushesE
+Name      = Always inside Bushes
 Version   = 1.1
 Conflicts = Deep Marsh Tiles,1.3
 Link      = https://reliccastle.com/resources/931/
