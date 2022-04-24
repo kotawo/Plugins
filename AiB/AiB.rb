@@ -1,4 +1,4 @@
-#===============================================================================
+#==============================================================================
 # Always inside Bushes - By Kotaro [v19.1]
 # Idea based of KleinStudio's "Overworlds always within grass" Script [v17]
 #==============================================================================
@@ -15,12 +15,15 @@ class Game_Character
           @bush_depth = Game_Map::TILE_HEIGHT
         elsif !moving? && this_map[0].bush?(this_map[1], this_map[2])
           @bush_depth = 12
-        elsif moving? && this_map[0].bush?(this_map[1], this_map[2])  #edit by Kota
-          @bush_depth = 12     
+#==============================================================================
+#added part to the existing method #byKota          
+        elsif moving? && this_map[0].bush?(this_map[1], this_map[2])
+          @bush_depth = 12 
+#==============================================================================              
         else
           @bush_depth = 0
         end
       end
     end
   end
-  #==============================================================================
+#==============================================================================
