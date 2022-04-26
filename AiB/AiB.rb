@@ -17,7 +17,7 @@ class Game_Character
           @bush_depth = 12
 #==============================================================================
 #added part to the existing method #byKota          
-        elsif moving? && this_map[0].bush?(this_map[1], this_map[2])
+        elsif moving? && this_map[0].bush?(this_map[1], this_map[2]) && self.map.bush?(xbehind, ybehind)
           @bush_depth = 12 
 #==============================================================================              
         else

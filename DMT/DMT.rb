@@ -125,7 +125,7 @@ class Game_Character
         @bush_depth = Game_Map::TILE_HEIGHT
       elsif (!moving? && this_map[0].bush?(this_map[1], this_map[2])) || (self==$game_player && $PokemonGlobal.stuck)
         @bush_depth = 12
-      elsif ALWAYSBUSHON == true && moving? && this_map[0].bush?(this_map[1], this_map[2]) || (self==$game_player && $PokemonGlobal.stuck)
+      elsif ALWAYSBUSHON == true && moving? && this_map[0].bush?(this_map[1], this_map[2]) && self.map.bush?(xbehind, ybehind) || (self==$game_player && $PokemonGlobal.stuck)
         @bush_depth = 12  		
       else
         @bush_depth = 0
