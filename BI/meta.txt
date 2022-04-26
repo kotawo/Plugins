@@ -1,0 +1,4 @@
+Name      = Better Itemfinder
+Version   = 1.0
+Link      = https://reliccastle.com/resources/932/
+Credits   = Kotaro
