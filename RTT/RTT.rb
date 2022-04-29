@@ -9,7 +9,7 @@ NoSoftReset = true
 #Set it to false if you want the last pokemon listed to be the guarantee 2
 #and more is gonna be upwards from there on.
 FirstGuaranteed = true
-#==============================================================================
+#==============================================================================      
 module Compiler
   module_function
   def compile_trainers(path = "PBS/trainers.txt")
@@ -355,7 +355,7 @@ module GameData
       @items          = hash[:items]        || []
       @real_lose_text = hash[:lose_text]    || "..."
       @numpkmn        = hash[:numpkmn]      || 0    #byKota
-      @guara     	    = hash[:guaranteed]   || 0  #byKota	
+      @guara     	    = hash[:guaranteed]   || 0    #byKota	
       @pokemon        = hash[:pokemon]      || []
       @pokemon.each do |pkmn|
         GameData::Stat.each_main do |s|
@@ -391,12 +391,6 @@ module GameData
       trainer.items     = @items.clone
       trainer.lose_text = self.lose_text
 	  
-	    if NoSoftReset == true
-	      ttype2 = @trainer_type.to_s
-	      ttype = ttype2.codepoints
-	      tname = @real_name.codepoints
-	    end
-	  
       if @numpkmn > 0      #byKota        
         if FirstGuaranteed == true
           pokemon_team2 = @pokemon.shift(@guara)
@@ -405,10 +399,8 @@ module GameData
         end  
         pokemon_team3 = pokemon_team2.rotate(0)        
         if NoSoftReset == true
-          hash = ttype, tname, @version
-          hash.flatten!
-          hash = hash.sum
-          srand(hash)
+          playerID = $Trainer.id
+          srand(playerID)
         end
         pokemon_team = @pokemon.sample(@numpkmn)
         pokemon_team += pokemon_team2
@@ -417,7 +409,6 @@ module GameData
         else
           @pokemon = @pokemon + pokemon_team3.pop(@guara)
         end  
-        #ep"pokemon_team",pokemon_team		#Remove the # in front of the "ep" to have the Trainer Teams displayed in the console
       else
         pokemon_team = @pokemon
       end	
