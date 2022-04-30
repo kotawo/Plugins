@@ -1,8 +1,12 @@
 #==============================================================================
 # Config	
 # LA Move Relearner base by IndianAnimator script by Kotaro
-EGGMOVES = true
-TMMOVES = true
+module Settings
+  EGGMOVESSWITCH  = 99
+  TMMOVESSWITCH   = 100
+end  
+EGGMOVES = false
+TMMOVES = false
 #==============================================================================
 class MoveRelearnerScreen
   def MoveRelearnerScreen.pbGetRelearnableMoves(pkmn)
@@ -20,11 +24,11 @@ class MoveRelearnerScreen
     end
     species = pkmn.species
     species_data = GameData::Species.get(species)
-    if EGGMOVES==true
+    if $game_switches[Settings::EGGMOVESSWITCH] || EGGMOVES == true
       babyspecies = species_data.get_baby_species
       GameData::Species.get(babyspecies).egg_moves.each { |m| moves.push(m) }
     end  
-    if TMMOVES==true
+    if $game_switches[Settings::TMMOVESSWITCH] || TMMOVES==true
       species_data.tutor_moves.each { |m| moves.push(m) }
     end  
     moves = tmoves + moves
