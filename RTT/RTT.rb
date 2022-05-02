@@ -389,8 +389,8 @@ module GameData
       trainer = NPCTrainer.new(tr_name, @trainer_type)
       trainer.id        = $Trainer.make_foreign_ID
       trainer.items     = @items.clone
-      trainer.lose_text = self.lose_text
-	  
+      trainer.lose_text = self.lose_text	  
+      
       if @numpkmn > 0      #byKota        
         if FirstGuaranteed == true
           pokemon_team2 = @pokemon.shift(@guara)
@@ -399,8 +399,14 @@ module GameData
         end  
         pokemon_team3 = pokemon_team2.rotate(0)        
         if NoSoftReset == true
+          ttype2 = @trainer_type.to_s
+          ttype = ttype2.codepoints
+          tname = @real_name.codepoints
           playerID = $Trainer.id
-          srand(playerID)
+          hash = ttype, tname, @version, playerID
+          hash.flatten!
+          hash = hash.sum
+          srand(hash)
         end
         pokemon_team = @pokemon.sample(@numpkmn)
         pokemon_team += pokemon_team2
